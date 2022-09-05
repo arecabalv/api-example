@@ -1,0 +1,12 @@
+services:
+
+  Shared.Logger:
+    class: ../../../context/shared/infrastructure/impl/WinstonLogger
+    arguments: []
+
+  Shared.AxiosClientFactory:
+    class: ../../../context/shared/infrastructure/client/AxiosClientFactory
+
+  Shared.VtexClient:
+    class: ../../../context/shared/infrastructure/client/VtexClient
+    arguments: ['@Shared.AxiosClientFactory']
