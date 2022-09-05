@@ -1,0 +1,13 @@
+services:
+
+  Controller.Get.User:
+    class: ../../controllers/user/get/GetUserController
+    arguments: []
+  
+  Controller.Delete.User:
+    class: ../../controllers/user/delete/DeleteUserController
+    arguments: []
+
+  Controller.Put.User:
+    class: ../../controllers/user/update/PutUserController
+    arguments: []
