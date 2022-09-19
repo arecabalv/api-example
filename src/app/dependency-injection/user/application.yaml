@@ -1,13 +1,24 @@
 services:
 
+  Repository.FileUserRepository:
+    class: ../../../context/user/infrastructure/persistance/FileUserRepository
+
+  UseCase.UserCreator:
+    class: ../../../context/user/application/UserCreator
+    arguments: ['@Repository.FileUserRepository']
+  UseCase.UserSearcher:
+    class: ../../../context/user/application/UserSearcher
+    arguments: ['@Repository.FileUserRepository']
+  UseCase.UserDeleter:
+    class: ../../../context/user/application/UserDeleter
+    arguments: ['@Repository.FileUserRepository']
+
   Controller.Get.User:
     class: ../../controllers/user/get/GetUserController
-    arguments: []
-  
+    arguments: ['@UseCase.UserSearcher']
   Controller.Delete.User:
     class: ../../controllers/user/delete/DeleteUserController
-    arguments: []
-
+    arguments: ['@UseCase.UserDeleter']
   Controller.Put.User:
     class: ../../controllers/user/update/PutUserController
-    arguments: []
+    arguments: ['@UseCase.UserCreator']

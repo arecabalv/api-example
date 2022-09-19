@@ -9,7 +9,7 @@ export const register = (router: Router) => {
   const putUserController: PutUserController = container.get('Controller.Put.User')
   const deleteUserController: DeleteUserController = container.get('Controller.Delete.User')
 
-  router.get('/user', (req: Request, res: Response, next: NextFunction) => {
+  router.get('/user/:user_id', (req: Request, res: Response, next: NextFunction) => {
     return getUserController.run(req, res, next);
   });
 
