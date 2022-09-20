@@ -9,6 +9,6 @@ export class GetUserController implements BaseController {
   async run(req: Request, res: Response, _next: NextFunction): Promise<void> {
     const userId = req.params.user_id;
     const user = await this.useCase.run(userId);
-    res.status(httpStatus.OK).send(user);
+    res.status(httpStatus.OK).send(user.toPrimitives());
   }
 }

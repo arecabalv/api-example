@@ -5,13 +5,13 @@ import fs from 'fs';
 
 export class FileUserRepository implements UserRepository {
   async save(user: User): Promise<void> {
-    fs.promises.writeFile(this.filePath(user.id), serialize(user));
+    fs.promises.writeFile(this.filePath(user.id.value), serialize(user.toPrimitives()));
   }
 
   async search(userId: string): Promise<User> {
     const userData = await fs.promises.readFile(this.filePath(userId));
     const { id, name, phone, age, email } = deserialize(userData);
-    return new User({ id, name, phone, age, email });
+    return User.create({ id, name, phone, age, email });
   }
 
   async delete(userId: string): Promise<void> {

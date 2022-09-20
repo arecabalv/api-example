@@ -5,7 +5,7 @@ export class UserCreator {
   constructor(private repository: UserRepository) { }
 
   async run(body: { id: string, name: string, phone: string, age: number, email: string }): Promise<void> {
-    const user = new User(body);
+    const user = User.create(body);
     return this.repository.save(user);
   }
 }
